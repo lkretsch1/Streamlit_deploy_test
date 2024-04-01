@@ -14,17 +14,17 @@ selected_gender = st.selectbox('What gender do you want to filter for?',
                                ['all penguins', 'male penguins', 'femalepenguins'])
 
 penguin_file = st.file_uploader("Select Your Local Penguins CSV (defaultprovided)")
+#if penguin_file is not None:
+#    penguins_df = pd.read_csv(penguin_file)
+#else:
+#    penguins_df = pd.read_csv("data/penguins.csv")
+#penguins_df = penguins_df[penguins_df['species'] == selected_species]
+
+penguin_file = st.file_uploader('Select Your Local Penguins CSV')
 if penguin_file is not None:
     penguins_df = pd.read_csv(penguin_file)
 else:
-    penguins_df = pd.read_csv("data/penguins.csv")
-penguins_df = penguins_df[penguins_df['species'] == selected_species]
-
-#penguin_file = st.file_uploader('Select Your Local Penguins CSV')
-#if penguin_file is not None:
- #   penguins_df = pd.read_csv(penguin_file)
-#else:
-#    st.stop()
+    st.stop()
 
 if selected_gender == 'male penguins':
     penguins_df = penguins_df[penguins_df['sex'] == 'male']
